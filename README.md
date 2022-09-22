@@ -1,28 +1,27 @@
-# Linux tools for Pictek Thunderbird mouse.
+# Linux tool for the Pictek Thunderbird mouse.
 ## About
-Tools to adjust the LED color and mode of the Picktek Thunderbird mouse under linux. This should work on macOS/BSD but
-I do not have a machine running these operating systems to test it on currently.
-## WARNING
-This program is still under development and requires root. I take no responsibility for any harm that may come to you, or your system if you run this. You may setup the following udev rule under /etc/udev/rules.d/50-Thunderbird.rules so that it does not require root access.
+Tool to adjust the LED color and mode of the Picktek Thunderbird mouse for Linux.
+## DISCLAIMER
+This program requires root unless you setup the following udev rule under /etc/udev/rules.d/50-Thunderbird.rules
 ```
 SUBSYSTEMS=="usb", ATTRS{idVendor}=="258a", ATTRS{idProduct}=="1007", GROUP="plugdev", MODE="666"
 ```
 ## Usage
 ```
-./Thunderbird-tools.py [OPTIONS] [frequency] [r] [g] [b]
+./thunderbird.py [OPTIONS] BRIGHTNESS
 ```
-For example to set the led to blue:
+For example to set the led to solid blue:
 ```
-./Thunderbird-tools.py -s 0xA2 0x00 0x00 0xFF
+./thunderbird.py --solid --profile 0 --rgb 0 0 255 9
 ```
 or to set the led to neon:
 ```
-./Thunderbird-tools.py -n 0xA2
+./thunderbird.py -n 9
 ```
 ## Options
 ```
 -n    Neon mode
--r    Pulsate mode
+-b    Breath mode
 -s    Solid mode
 ```
 
